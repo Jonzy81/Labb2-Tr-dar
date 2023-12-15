@@ -12,7 +12,7 @@ namespace Labb2_Trådar
         public int Distance { get; set; }
         public int Speed { get; set; }
 
-        public Car(string carName) 
+        public Car(string carName, int distance) 
         {
             CarName = carName;
             Distance = 0;
