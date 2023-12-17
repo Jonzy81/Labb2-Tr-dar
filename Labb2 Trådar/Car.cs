@@ -8,11 +8,12 @@ namespace Labb2_Trådar
 {
     internal class Car
     {
+        
         public string CarName { get; set; }
-        public int Distance { get; set; }
+        public double Distance { get; set; }
         public int Speed { get; set; }
 
-        public Car(string carName, int distance) 
+        public Car(string carName) 
         {
             CarName = carName;
             Distance = 0;
