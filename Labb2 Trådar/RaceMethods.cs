@@ -22,7 +22,7 @@ namespace Labb2_Trådar
             while (car.Distance <= 1)
             {
                 car.Distance += (car.Speed / 360000.0);     //meajures distance traveled over time its the basic km/h. 
-                 Console.WriteLine($"{car.CarName} {car.Distance}");
+                // Console.WriteLine($"{car.CarName} {car.Distance}");
                 Thread.Sleep(10);     //adding a threadSleep so that the program dont end immedietly 
                 if (car.Distance >= 1)
                 {   
@@ -71,18 +71,6 @@ namespace Labb2_Trådar
                 car.Speed -= 1;
             }
         }
-        private static void DisplayRaceStatus(Car car, List<Car> list)
-        {
-            Console.Clear();
-            Console.WriteLine("Current Race Status:");
-
-            foreach (Car cars in list)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"{cars.CarName,-15} - Distance: {cars.Distance:0.###, -8}km, Speed: {cars.Speed, -8}");
-                Console.ResetColor();
-            }
-            Console.WriteLine();
-        }
+       
     }
 }

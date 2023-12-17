@@ -3,19 +3,19 @@
     internal class Program
     {
         static void Main(string[] args)
-        {   
-            //Car car1 = new Car("Porsche 918 Spyder");
-            //Car car2 = new Car("Lamborghini Aventador");
-            //Car car3 = new Car("McLaren F1");
-            //Car car4 = new Car("Ferrari LaFerrari");
+        {
+            Car car1 = new Car("Porsche 918 Spyder");
+            Car car2 = new Car("Lamborghini Aventador");
+            Car car3 = new Car("McLaren F1");
+            Car car4 = new Car("Ferrari LaFerrari");
 
             List<Car> list = new List<Car>();
             bool progress=true;
 
-            Thread thread1 = new Thread(() => RaceMethods.Race(new Car("Porsche 918 Spyder"), list));  //Creating Threads that delegates my race method and declares object for them 
-            Thread thread2 = new Thread(() => RaceMethods.Race(new Car("Lamborghini Aventador"), list));
-            Thread thread3 = new Thread(() => RaceMethods.Race(new Car("McLaren F1"), list));
-            Thread thread4 = new Thread(() => RaceMethods.Race(new Car("Ferrari LaFerrari"), list));
+            Thread thread1 = new Thread(() => RaceMethods.Race(car1, list));  //Creating Threads that delegates my race method and declares object for them 
+            Thread thread2 = new Thread(() => RaceMethods.Race(car2, list));
+            Thread thread3 = new Thread(() => RaceMethods.Race(car3, list));
+            Thread thread4 = new Thread(() => RaceMethods.Race(car4, list));
 
             thread1.Start();
             thread2.Start();
@@ -27,9 +27,28 @@
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Please press [enter key] to check the status of the race: ");
                 Console.ResetColor();
+                Console.WriteLine();
+                Console.WriteLine();
                 ConsoleKeyInfo key = Console.ReadKey();
-            }
 
+                if (key.Key==ConsoleKey.Enter)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Current Race Status:");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"{car1.CarName,-25} - Distance: {car1.Distance,-6:0.###}km, Speed: {car1.Speed,-8}");
+                    Console.WriteLine($"{car2.CarName,-25} - Distance: {car2.Distance,-6:0.###}km, Speed: {car2.Speed,-8}");
+                    Console.WriteLine($"{car3.CarName,-25} - Distance: {car3.Distance,-6:0.###}km, Speed: {car3.Speed,-8}");
+                    Console.WriteLine($"{car4.CarName,-25} - Distance: {car4.Distance,-6:0.###}km, Speed: {car4.Speed,-8}");
+                    Console.ResetColor();
+
+                    Console.ResetColor();
+
+                    Console.ResetColor();
+
+
+                }
+            }
             thread1.Join(); //Joins for a smooth landing
             thread2.Join();
             thread3.Join();
