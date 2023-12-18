@@ -35,7 +35,7 @@
                 ConsoleKeyInfo key = Console.ReadKey();
 
                 if (key.Key == ConsoleKey.Enter)
-                {
+                {   
                     Console.Clear();
                     Console.WriteLine("Current Race Status:");
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -44,6 +44,12 @@
                     Console.WriteLine($"{car3.CarName,-23} - Distance: {car3.Distance * 10,-6:0.###}km, \tSpeed: {car3.Speed,-8}");
                     Console.WriteLine($"{car4.CarName,-23} - Distance: {car4.Distance * 10,-6:0.###}km, \tSpeed: {car4.Speed,-8}");
                     Console.ResetColor();
+                    if(list.Count > 0)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Winner{list[0].CarName} is the winner of the race");
+                        Console.ResetColor();
+                    }
                 }
             }
 
@@ -56,6 +62,7 @@
             {
                 foreach (Car cars in list)
                 {
+
                     Console.WriteLine($"{cars.CarName} placement in the race");
                 }
             }

@@ -22,12 +22,13 @@ namespace Labb2_Trådar
             Console.WriteLine($"{ car.CarName} has started the race");
             while (car.Distance <= 1)
             {
-                car.Distance += (car.Speed / 360000.0);     //meajures distance traveled over time its the basic km/h. 
+                car.Distance += (car.Speed / 36000.0);     //meajures distance traveled over time its the basic km/h. 
                 // Console.WriteLine($"{car.CarName} {car.Distance}");
                 Thread.Sleep(10);     //adding a threadSleep so that the program dont end immedietly 
                
                 if (car.Distance >= 1)
-                {   
+                {
+                    cts.Cancel();
                     //Console.WriteLine($"{car.CarName} Reached the finish line");
                     lock (lockObject)
                     {
@@ -40,9 +41,10 @@ namespace Labb2_Trådar
                             Console.BackgroundColor = ConsoleColor.Red;
                             Console.WriteLine($"{car.CarName} is the winner!");
                             Console.ResetColor();
+
                         }
                     }
-                    cts.Cancel();
+                   
                     break;
                 }
             }
