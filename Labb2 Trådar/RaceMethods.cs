@@ -12,8 +12,9 @@ namespace Labb2_Trådar
     internal class RaceMethods
     {
         public static object lockObject = new object();
-        public static void Race(Car car, List<Car> list)
+        public static void Race(Car car, List<Car> list, CancellationTokenSource cts)
         {
+            Thread.Sleep(100);
             Timer timer = new Timer(state => { RaceProblems(car); }, null, 3000, 3000) ;  
             /*Timer class, has a delegate that calls on method, the timer starts at 300 ms and repeats every 300ms, very fancy stuff*/   
                 
@@ -24,6 +25,7 @@ namespace Labb2_Trådar
                 car.Distance += (car.Speed / 360000.0);     //meajures distance traveled over time its the basic km/h. 
                 // Console.WriteLine($"{car.CarName} {car.Distance}");
                 Thread.Sleep(10);     //adding a threadSleep so that the program dont end immedietly 
+               
                 if (car.Distance >= 1)
                 {   
                     //Console.WriteLine($"{car.CarName} Reached the finish line");
@@ -33,14 +35,14 @@ namespace Labb2_Trådar
                     }
                     if (list.Count == 1)
                     {
-                        lock (RaceMethods.lockObject)
+                        lock (lockObject)
                         {
                             Console.BackgroundColor = ConsoleColor.Red;
                             Console.WriteLine($"{car.CarName} is the winner!");
                             Console.ResetColor();
                         }
                     }
-
+                    cts.Cancel();
                     break;
                 }
             }
