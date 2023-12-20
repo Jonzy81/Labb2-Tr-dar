@@ -60,10 +60,12 @@
 
             lock (RaceMethods.lockObject)
             {
+                int index=0;
                 foreach (Car cars in list)
                 {
 
-                    Console.WriteLine($"{cars.CarName} placement in the race");
+                    Console.WriteLine($"{index+1} {cars.CarName} placement in the race");
+                    index++;
                 }
             }
             Console.WriteLine("Race Finished");
