@@ -15,14 +15,14 @@ namespace Labb2_Trådar
         public static void Race(Car car, List<Car> list, CancellationTokenSource cts)
         {
             Thread.Sleep(100);
-            Timer timer = new Timer(state => { RaceProblems(car); }, null, 30000, 30000) ;  
+            Timer timer = new Timer(state => { RaceProblems(car); }, null, 3000, 3000) ;  
             /*Timer class, has a delegate that calls on method, the timer starts at 300 ms and repeats every 300ms, very fancy stuff*/   
                 
             //The time ratio is negative one 0, making me remove one 0 from the rest of th algorithm 
             Console.WriteLine($"{ car.CarName} has started the race");
             while (car.Distance <= 1)
             {
-                car.Distance += (car.Speed / 3600000.0);     //measures distance traveled over time its the basic km/h. 
+                car.Distance += (car.Speed / 360000.0);     //measures distance traveled over time its the basic km/h. 
                 // Console.WriteLine($"{car.CarName} {car.Distance}");
                 Thread.Sleep(10);     //adding a threadSleep so that the program dont end immedietly 
                
@@ -41,10 +41,8 @@ namespace Labb2_Trådar
                             Console.BackgroundColor = ConsoleColor.Red;
                             Console.WriteLine($"{car.CarName} is the winner!");
                             Console.ResetColor();
-
                         }
                     }
-                   
                     break;
                 }
             }

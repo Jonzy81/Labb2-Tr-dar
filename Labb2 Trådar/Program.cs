@@ -25,15 +25,13 @@
             thread2.Start();
             thread3.Start();
             thread4.Start();
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Please press [enter key] to check the status of the race: ");
+            Console.ResetColor();
+            ConsoleKeyInfo key = Console.ReadKey();
             while (!cts.Token.IsCancellationRequested)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Please press [enter key] to check the status of the race: ");
-                Console.ResetColor();
-
-                ConsoleKeyInfo key = Console.ReadKey();
-
+            {   
+                Thread.Sleep(2000);
                 if (key.Key == ConsoleKey.Enter)
                 {   
                     Console.Clear();
